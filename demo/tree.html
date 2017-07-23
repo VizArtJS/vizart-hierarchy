@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bar Chart Demo</title>
+    <link href="./vizart-hierarchy.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="./vizart-hierarchy.standalone.js" type="text/javascript"></script>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        #chart {
+            font-family: 'Merriweather Sans', sans-serif;
+            font-size: 10px;
+            font-weight: 400;
+            color: #4c4c4c;
+            fill: #4c4c4c;
+            text-align: center;
+            cursor: default;
+            height: 100%;
+        }
+
+        #chart text {
+            fill: black;
+            font-size: 16px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="chart">
+</div>
+
+<script>
+    $(document).ready(function () {
+        var chart = new VizArtHierarchy.WeightedTree('#chart', {
+            chart: {
+                margin: {
+                    left: 50,
+                    top: 30,
+                    right: 220,
+                    bottom: 20
+                },
+            },
+            color: {
+                scheme: [
+                    "#F44336",
+                    "#E91E63",
+                    "#9C27B0",
+                    "#673AB7",
+                    "#3F51B5",
+                    "#2196F3",
+                    "#03A9F4",
+                    "#00BCD4",
+                    "#009688",
+                    "#4CAF50",
+                    "#8BC34A",
+                    "#CDDC39",
+                    "#FFEB3B",
+                    "#FFC107",
+                    "#FF9800",
+                    "#FF5722"
+                ],
+                type: 'categorical'
+            }
+        });
+
+        $.getJSON('./assets/flare.json', function (data) {
+
+            chart.render(data);
+
+        });
+    });
+
+</script>
+</body>
+</html>
