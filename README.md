@@ -57,7 +57,104 @@ npm run test        // run tests only
 npm run test:cover  // run tests and view coverage report
 ```
 
+## API
+* [Circle Pack](#circle-pack)
+* [Weighted Tree] (#weighted-tree)
+* [Sunburst](#sunburst)
+* [Icicle Tree] (#icicle-tree)
 
+### Circle Pack
+[<img alt="Circle Pack" src="https://github.com/vizartjs/vizartjs.github.io/blob/master/img/charts/circle_pack.jpg">](https://vizartjs.github.io/circle_pack.html)
+```javascript
+import { CirclePack } from 'vizart-hierarchy';
+import 'vizart-hierarchy/dist/vizart-hierarchy.css';
+
+const options = {
+	data: {
+		x: { name: 'School', type: 'string', accessor: 'MX'},
+		y: { name: 'Book Borrowings', type: 'number', accessor: 'MY'},
+	},
+
+	plots: {
+		titleFn: (d)=> { return 'Total: ' + d + ' borrowings'}
+	}
+};
+
+
+let chart = new VizArtHierarchy.CirclePack('#chart', options);
+$.getJSON('./data/library.json', function(data){
+	chart.render(data);
+	chart.createLegend('#legendCircles');
+});
+	
+```
+
+
+### Weighted Tree
+[<img alt="Weighted Tree" src="https://github.com/vizartjs/vizartjs.github.io/blob/master/img/charts/weighted_tree.jpg">](https://vizartjs.github.io/weighted_tree.html)
+```javascript
+import { WeightedTree } from 'vizart-hierarchy';
+import 'vizart-hierarchy/dist/vizart-hierarchy.css';
+
+d3.json("./data/flare.json", (data)=> {
+	let chart = WeightedTree('#chart', {
+		chart: {
+			margin: {
+				top: 40,
+				bottom: 40,
+				left: 0,
+				right: 0
+			},
+		},
+	});
+
+	chart.render(json);
+});
+	
+```
+
+### Sunburst
+[<img alt="Sunburst" src="https://github.com/vizartjs/vizartjs.github.io/blob/master/img/charts/sunburst.jpg">](https://vizartjs.github.io/sunburst.html)
+```javascript
+import { Sunburst } from 'vizart-hierarchy';
+import 'vizart-hierarchy/dist/vizart-hierarchy.css';
+
+d3.json("./data/flare.json", (data)=> {
+	let chart = Sunburst('#chart', {
+		chart: {
+			margin: {
+				top: 40,
+				bottom: 40,
+				left: 0,
+				right: 0
+			},
+		},
+	});
+
+	chart.render(json);
+});
+```
+### Icicle Tree
+[<img alt="Icicle Tree" src="https://github.com/vizartjs/vizartjs.github.io/blob/master/img/charts/icicle_tree.jpg">](https://vizartjs.github.io/icicle_tree.html)
+```javascript
+import { IcicleTree } from 'vizart-hierarchy';
+import 'vizart-hierarchy/dist/vizart-hierarchy.css';
+
+d3.json("./data/flare.json", (data)=> {
+	let chart = new IcicleTree('#chart', {
+		chart: {
+			margin: {
+				top: 40,
+				bottom: 40,
+				left: 0,
+				right: 0
+			},
+		},
+	});
+
+	chart.render(json);
+});
+```
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
