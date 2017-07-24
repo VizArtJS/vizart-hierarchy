@@ -59,9 +59,9 @@ npm run test:cover  // run tests and view coverage report
 
 ## API
 * [Circle Pack](#circle-pack)
-* [Weighted Tree] (#weighted-tree)
+* [Weighted Tree](#weighted-tree)
 * [Sunburst](#sunburst)
-* [Icicle Tree] (#icicle-tree)
+* [Icicle Tree](#icicle-tree)
 
 ### Circle Pack
 [<img alt="Circle Pack" src="https://github.com/vizartjs/vizartjs.github.io/blob/master/img/charts/circle_pack.jpg">](https://vizartjs.github.io/circle_pack.html)
