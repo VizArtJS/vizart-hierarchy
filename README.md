@@ -140,7 +140,25 @@ d3.json("./data/flare.json", (data)=> {
 });
 	
 ```
-
+Option spec
+```
+{
+    chart: {
+        type: 'weighted-tree',
+        margin: NoMargin
+    },
+    color: DefaultCategoricalColor,
+    plots: {
+        mode: 'tree',
+        branchPadding: -1,
+        fixedSpan : -1,
+        nodeOpacity: 0.4,
+        nodeStrokeOpacity: 0.6,
+        linkOpacity: 0.35,
+        textOffset: 12
+    }
+}
+```
 ### Sunburst
 [<img alt="Sunburst" src="https://github.com/vizartjs/vizartjs.github.io/blob/master/img/charts/sunburst.jpg">](https://vizartjs.github.io/sunburst.html)
 ```javascript
@@ -162,6 +180,20 @@ d3.json("./data/flare.json", (data)=> {
 	chart.render(json);
 });
 ```
+
+Option spec
+```
+{
+    chart: {
+        type: 'sunburst',
+        margin: NoMargin
+    },
+    color: DefaultCategoricalColor,
+    plots: {
+        drawLabels: true
+    }
+}
+```
 ### Icicle Tree
 [<img alt="Icicle Tree" src="https://github.com/vizartjs/vizartjs.github.io/blob/master/img/charts/icicle_tree.jpg">](https://vizartjs.github.io/icicle_tree.html)
 ```javascript
@@ -182,6 +214,17 @@ d3.json("./data/flare.json", (data)=> {
 
 	chart.render(json);
 });
+```
+
+Option spec
+```
+{
+    chart: {
+        type: 'icicle-tree',
+        margin: NoMargin
+    },
+    color: DefaultCategoricalColor
+}
 ```
 ## License
 
