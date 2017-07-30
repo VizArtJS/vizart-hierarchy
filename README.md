@@ -88,6 +88,34 @@ $.getJSON('./data/library.json', function(data){
 });
 	
 ```
+Options sepc
+```
+{
+    chart: {
+        type: 'circle-pack',
+        margin: NoMargin,
+    },
+    color: DefaultCategoricalColor,
+    renderer: 'canvas',
+    data: {
+        x:  { name: 'dimension', type: 'string', accessor: 'MX'},
+        y: { name: 'metric', type: 'number', accessor: 'MY'},
+    },
+    plots: {
+        padding: 20,
+        circleColors: ['#bdd7e7',
+            '#6baed6',
+            '#3182bd',
+            '#08519c'],
+        mainTextColor: [74, 74, 74],//"#4A4A4A",
+        titleFont: "Oswald",
+        titleFn: (d)=> { return 'Total ' + d},
+        bodyFont: "Merriweather Sans",
+        barChartHeight: 0.7,
+        barChartHeightOffset: 0.15
+    }
+}
+```
 
 
 ### Weighted Tree
