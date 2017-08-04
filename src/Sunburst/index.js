@@ -8,14 +8,12 @@ import 'd3-transition';
 import {
     AbstractChart,
     DefaultCategoricalColor,
-    NoMargin,
     mergeBase
 } from 'vizart-core';
 
 const DefaultOptions = {
     chart: {
-        type: 'sunburst',
-        margin: NoMargin
+        type: 'sunburst'
     },
     color: DefaultCategoricalColor,
     plots: {

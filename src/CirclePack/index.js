@@ -7,7 +7,7 @@ import { timer } from  'd3-timer';
 import { easeCubicInOut } from 'd3-ease';
 import { interpolateZoom } from 'd3-interpolate';
 
-import { AbstractChart, NoMargin, check, uuid, mergeBase, DefaultCategoricalColor } from 'vizart-core';
+import { AbstractChart, check, uuid, mergeBase, DefaultCategoricalColor } from 'vizart-core';
 
 import isUndefined from 'lodash-es/isUndefined';
 import uniq from 'lodash-es/uniq';
@@ -24,7 +24,6 @@ import sameBranch from './branch-checker';
 const DefaultOptions = {
     chart: {
         type: 'circle-pack',
-        margin: NoMargin,
     },
     color: DefaultCategoricalColor,
     renderer: 'canvas',

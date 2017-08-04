@@ -1,4 +1,4 @@
-import { AbstractChart, DefaultCategoricalColor, NoMargin, mergeBase } from 'vizart-core';
+import { AbstractChart, DefaultCategoricalColor, mergeBase } from 'vizart-core';
 import { tree, cluster, hierarchy } from 'd3-hierarchy';
 import { transition } from 'd3-transition';
 import { scaleSqrt } from 'd3-scale';
@@ -9,7 +9,6 @@ import elbow from '../util/elbow';
 const DefaultOptions = {
     chart: {
         type: 'weighted-tree',
-        margin: NoMargin
     },
     color: DefaultCategoricalColor,
     plots: {
@@ -38,7 +37,7 @@ const collapse =(d)=> {
     }
 };
 
-class HorizontalTree extends AbstractChart {
+class WeightedTree extends AbstractChart {
 
     constructor(canvasId, _userOptions) {
         super(canvasId, _userOptions);
@@ -207,5 +206,5 @@ class HorizontalTree extends AbstractChart {
     };
 };
 
-export default HorizontalTree
+export default WeightedTree
 

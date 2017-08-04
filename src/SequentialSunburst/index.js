@@ -1,4 +1,4 @@
-import { AbstractChart, DefaultCategoricalColor, uuid, mergeBase, NoMargin } from 'vizart-core';
+import { AbstractChart, DefaultCategoricalColor, uuid, mergeBase } from 'vizart-core';
 
 import { select, selectAll } from 'd3-selection';
 import { partition, hierarchy } from 'd3-hierarchy'
@@ -7,7 +7,6 @@ import { arc } from 'd3-shape';
 const DefaultOptions = {
     chart: {
         type: 'sequential-sunburst',
-        margin: NoMargin
     },
     color: DefaultCategoricalColor,
     plots: {

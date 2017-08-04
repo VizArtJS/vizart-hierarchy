@@ -1,4 +1,4 @@
-import {AbstractChart, NoMargin, DefaultCategoricalColor, mergeBase } from 'vizart-core'
+import {AbstractChart, DefaultCategoricalColor, mergeBase } from 'vizart-core'
 
 import { scaleLinear } from 'd3-scale';
 import { partition, hierarchy } from 'd3-hierarchy';
@@ -6,7 +6,6 @@ import { partition, hierarchy } from 'd3-hierarchy';
 const DefaultOptions = {
     chart: {
         type: 'icicle-tree',
-        margin: NoMargin
     },
     color: DefaultCategoricalColor
 };
