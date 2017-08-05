@@ -70,7 +70,7 @@ class IcicleTree extends AbstractChart {
             .attr("y", (d)=> { return d.y0; })
             .attr("width", (d)=> { return d.x1 - d.x0; })
             .attr("height", (d)=> { return d.y1 - d.y0; })
-            .attr('fill', (d) => { return this._colorScale(d.data.name); })
+            .attr('fill', (d) => { return this._color(d.data.name); })
             .on("click", clicked);
 
         label
@@ -101,7 +101,7 @@ class IcicleTree extends AbstractChart {
             .transition()
             .duration(this._options.animation.duration.update)
             .attr('fill', (d) => {
-                return this._colorScale(d.name);
+                return this._color(d.name);
             });
     };
 

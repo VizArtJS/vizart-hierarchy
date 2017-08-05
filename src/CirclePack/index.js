@@ -64,7 +64,7 @@ class CirclePack extends AbstractChart {
 
     render(_data) {
         this.data(_data);
-        this._colorScale = this._provideColorScale();
+        this._color = this._provideColor();
 
         let layoutData = this._data;
 
@@ -143,7 +143,7 @@ class CirclePack extends AbstractChart {
         let sampleLeaf = this._hierarchy.leaves()[0];
 
         let barDimList = uniq(sampleLeaf.data._data, this.barDimVal);
-        this._colorScale.domain(barDimList);
+        this._color.domain(barDimList);
         this.elementsPerBar = barDimList.length;
 
 
@@ -454,7 +454,7 @@ class CirclePack extends AbstractChart {
 
                 //Draw the bar
                 chosenContext.beginPath();
-                chosenContext.fillStyle = this._colorScale(this.barDimVal(bar));
+                chosenContext.fillStyle = this._color(this.barDimVal(bar));
                 chosenContext.fillRect(nodeX + -nodeR * 0.3, bar.barPiecePosition, bar.width, barHeight);
                 chosenContext.fill();
 

@@ -1,6 +1,6 @@
 {
   "name": "vizart-hierarchy",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "description": "VizArt: Hierarchy",
   "main": "dist/vizart-hierarchy.js",
   "module": "dist/vizart-hierarchy.mjs",
@@ -33,7 +33,7 @@
     "d3-shape": "^1.2.0",
     "d3-timer": "^1.0.6",
     "d3-transition": "^1.1.0",
-    "vizart-core": "^0.6.8",
+    "vizart-core": "^0.7.0",
     "lodash-es": "^4.17.4"
   },
   "devDependencies": {

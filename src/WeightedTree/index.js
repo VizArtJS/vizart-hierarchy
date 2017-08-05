@@ -127,7 +127,7 @@ class WeightedTree extends AbstractChart {
             .style("stroke-width", (d)=> {
                 return this.nodeRadius(d) * 2;
             })
-            .style("stroke",(d)=> { return this._colorScale(d.data.name) })
+            .style("stroke",(d)=> { return this._color(d.data.name) })
             .style("stroke-opacity", this._options.plots.linkOpacity);
 
         this.node = this._svg.selectAll(".node")
@@ -138,9 +138,9 @@ class WeightedTree extends AbstractChart {
 
         this.node.append("circle")
             .attr("r", this.nodeRadius)
-            .style("stroke", (d)=> { return this._colorScale(d.data.name) })
+            .style("stroke", (d)=> { return this._color(d.data.name) })
             .style("stroke-opacity", this._options.plots.nodeStrokeOpacity)
-            .style("fill", (d)=> { return this._colorScale(d.data.name) })
+            .style("fill", (d)=> { return this._color(d.data.name) })
             .style("fill-opacity",  this._options.plots.nodeOpacity);
 
         this.node.append("text")
@@ -190,13 +190,13 @@ class WeightedTree extends AbstractChart {
         this._svg.selectAll('.node circle')
             .transition()
             .duration(duration.general)
-            .style("stroke", (d)=> { return this._colorScale(d.data.name) })
+            .style("stroke", (d)=> { return this._color(d.data.name) })
             .style("stroke-opacity", this._options.plots.nodeStrokeOpacity)
-            .style("fill", (d)=> { return this._colorScale(d.data.name) })
+            .style("fill", (d)=> { return this._color(d.data.name) })
             .style("fill-opacity",  this._options.plots.nodeOpacity);
 
         this._svg.selectAll(".link path")
-            .style("stroke",(d)=> { return this._colorScale(d.data.name) })
+            .style("stroke",(d)=> { return this._color(d.data.name) })
             .style("stroke-opacity", this._options.plots.linkOpacity);
     };
 

@@ -81,7 +81,7 @@ class SequentialSunburst extends AbstractChart {
             .attr("d", _arc)
             .attr("fill-rule", "evenodd")
             .style("fill",  (d)=> {
-                return this._colorScale(d.data.name); })
+                return this._color(d.data.name); })
             .style("opacity", 1)
             .on("mouseover", mouseover);
 
@@ -130,7 +130,7 @@ class SequentialSunburst extends AbstractChart {
 
             entering.append("svg:polygon")
                 .attr("points", _breadcrumbPoints)
-                .style("fill",  (d)=> { return that._colorScale(d.data.name); })
+                .style("fill",  (d)=> { return that._color(d.data.name); })
 
             entering.append("svg:text")
                 .attr("x", (breadcrumbs.w + breadcrumbs.t) / 2)
@@ -230,10 +230,10 @@ class SequentialSunburst extends AbstractChart {
         let legend = select(_domId)
             .append("svg:svg")
             .attr("width", _legendMargin.w)
-            .attr("height", this._colorScale.domain().length * (_legendMargin.h + _legendMargin.s));
+            .attr("height", this._color.domain().length * (_legendMargin.h + _legendMargin.s));
 
         let g = legend.selectAll("g")
-            .data(this._colorScale.domain())
+            .data(this._color.domain())
             .enter().append("svg:g")
             .attr("transform", (d, i) => {
                 return "translate(0," + i * (_legendMargin.h + _legendMargin.s) + ")";
@@ -245,7 +245,7 @@ class SequentialSunburst extends AbstractChart {
             .attr("width", _legendMargin.w)
             .attr("height", _legendMargin.h)
             .style("fill", (d) => {
-                return this._colorScale(d);
+                return this._color(d);
             });
 
         g.append("svg:text")

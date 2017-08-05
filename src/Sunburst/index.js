@@ -42,7 +42,7 @@ class Sunburst extends AbstractChart {
         let x = scaleLinear().range([0, 2 * Math.PI]);
         let y = scaleSqrt().range([0, this.radius]);
         let _svg = this._svg;
-        let _colorScale = this._colorScale;
+        let _color = this._color;
         let radius = this.radius;
         let that = this;
         // Calculate the d path for each slice.
@@ -144,7 +144,7 @@ class Sunburst extends AbstractChart {
                     .append("path")
                     .style("fill",  (d)=> {
                         return d.parent
-                            ? _colorScale(d.data.name)
+                            ? _color(d.data.name)
                             : "white"; })  // Return white for root.
                     .on("click", click);
 
@@ -189,7 +189,7 @@ class Sunburst extends AbstractChart {
         super.update();
 
         if (this._data) {
-            this._colorScale.domain(this._data.map(function(d){
+            this._color.domain(this._data.map(function(d){
                 return d.name;
             }));
         }
@@ -202,7 +202,7 @@ class Sunburst extends AbstractChart {
             .transition()
             .duration(1250)
             .attr("fill", (d)=> {
-                return this._colorScale(d.data.name);
+                return this._color(d.data.name);
             });
     };
 
