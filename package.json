@@ -1,6 +1,6 @@
 {
   "name": "vizart-hierarchy",
-  "version": "0.6.7",
+  "version": "0.7.0",
   "description": "VizArt: Hierarchy",
   "main": "dist/vizart-hierarchy.js",
   "module": "dist/vizart-hierarchy.mjs",
@@ -33,7 +33,7 @@
     "d3-shape": "^1.2.0",
     "d3-timer": "^1.0.6",
     "d3-transition": "^1.1.0",
-    "vizart-core": "^0.7.8",
+    "vizart-core": "^0.9.1",
     "lodash-es": "^4.17.4"
   },
   "devDependencies": {
@@ -43,11 +43,11 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.24.1",
     "babelrc-rollup": "^3.0.0",
-    "eslint": "^4.4.0",
+    "eslint": "^4.4.1",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.5.0",
     "rollup": "^0.45.2",
-    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-babel": "^3.0.1",
     "rollup-plugin-commonjs": "^8.1.0",
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-livereload": "^0.4.0",
