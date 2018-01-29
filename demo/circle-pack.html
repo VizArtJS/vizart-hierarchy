@@ -175,35 +175,14 @@
 
     <div class="row text-center full-height" style="margin-top: 20px;">
         <div class="col-sm-4">
-            <div id="topTitle" class="title">A Closer Look at Labor</div>
-            <div id="subTitle">The number of employed persons by occupation & age | US</div>
-            <div id="topText">In this visualization you can investigate how the 146 million employed persons in 2014 were divided up between
-                ~550 different occupations.
-                The occupations are grouped and even subgrouped.
-                Each grey colored circle encloses all occupations that fall under its umbrella name.
-                Each white circle is finally an actual profession and further shows the age distribution within that occupation.
-                You can click on any of the circles to zoom in or search for an occupation with the search box below
+            <div class="row">
+                <div id="topTitle" class="title">Library Data</div>
             </div>
 
-            <hr>
-
-            <div id="searchTitle" class="title">Find an Occupation</div>
-            <div class="form-group">
-                <select id="searchBox" class="combobox input-large form-control" style="display: none;" onchange="searchEvent(this.value)">
-                    <option value="" selected="selected">Search...</option>
-                </select>
-            </div>
 
             <div class="row text-center" style=	"margin-top: 30px;">
-                <div class="col-sm-6">
-                    <div id="legendTitle">Legend</div>
-                    <div id="legendText">The size of each white circle is scaled according to the number of persons employed.
-                        The bigger the circle, the more people who are working in that occupation
-                    </div>
-                </div>
                 <div id="legendRowWrapper" class="col-sm-6">
-                    <div id="legendTitle2" style="text-align: center;">Number of employed persons</div>
-                    <div class="legendSubTitle">in thousands</div>
+                    <div id="legendTitle2" style="text-align: center;">Number of book borrowings</div>
                     <div id="legendCircles"></div>
                 </div>
             </div>
