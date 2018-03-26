@@ -182,7 +182,7 @@ const drawCanvas = (state, chosenContext, hidden = false) => {
     //And hide those not close the the parent
     if (node.parent !== undefined && node.children !== undefined) {
       if (
-        (node.data.name !== rootName) &&
+        node.data.name !== rootName &&
         !hidden &&
         showText &&
         kids.includes(node.data.name)

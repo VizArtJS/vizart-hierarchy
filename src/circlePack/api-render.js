@@ -15,7 +15,14 @@ const apiRender = state => ({
   render(data) {
     apiRenderCanvas(state).render(data);
 
-    const { _options, _data, _color, _hiddenContext, _frontCanvasId, _canvasScale  } = state;
+    const {
+      _options,
+      _data,
+      _color,
+      _hiddenContext,
+      _frontCanvasId,
+      _canvasScale,
+    } = state;
 
     const barDimVal = d => d[_options.data.x.accessor];
 
@@ -25,13 +32,12 @@ const apiRender = state => ({
     state.centerX = centerX;
     state.centerY = centerY;
     state.zoomInfo = {
-        centerX: centerX,
-        centerY: centerY,
-        scale: 1,
+      centerX: centerX,
+      centerY: centerY,
+      scale: 1,
     };
 
-
-      //////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
     /////////////////////// Create Scales  ///////////////////////
     //////////////////////////////////////////////////////////////
 
@@ -56,32 +62,33 @@ const apiRender = state => ({
 
     packLayout(_hierarchy);
 
-    state._hierarchy = _hierarchy;
-
-    //////////////////////////////////////////////////////////////
-    ////////////// Create Circle Packing Data ////////////////////
-    //////////////////////////////////////////////////////////////
-
-    state.nodes = _hierarchy.descendants();
-    state.root = _hierarchy;
-    state.focus = state.root;
-    state.nodeCount = state.nodes.length;
-    state.rootName = state.root.data.name;
-
-    state.nodeByName = {};
-    for (let d of state.nodes) {
-      state.nodeByName[d.data.name] = d;
-    }
-
     const barDimList = _hierarchy
       .leaves()[0]
       .data._data.map(d => barDimVal(d))
       .filter((ele, pos, arr) => arr.indexOf(ele) === pos);
     _color.domain(barDimList);
-    state.elementsPerBar = barDimList.length;
 
-    //Default values for variables - set to root
-    state.kids = [state.rootName]; //needed to check which arced titles to show - only those close to the parent node
+    const nodes = _hierarchy.descendants();
+
+    //////////////////////////////////////////////////////////////
+    ////////////// Create Circle Packing Data ////////////////////
+    //////////////////////////////////////////////////////////////
+
+    state = Object.assign(state, {
+      _hierarchy,
+      nodes,
+      root: _hierarchy,
+      focus: _hierarchy,
+      nodeCount: nodes.length,
+      rootName: _hierarchy.data.name,
+      nodeByName: {},
+      elementsPerBar: barDimList.length,
+      kids: [_hierarchy.data.name],
+    });
+
+    for (let d of state.nodes) {
+      state.nodeByName[d.data.name] = d;
+    }
 
     //Setup the kids variable for the top (root) level
     for (let i = 0; i < state.root.children.length; i++) {
@@ -134,19 +141,21 @@ const apiRender = state => ({
     //Based on the generous help by Stephan Smola
     //http://bl.ocks.org/smoli/d7e4f9199c15d71258b5
 
-    state.scaleFactor = 1; //dummy value
-    state._cubicEase = easeCubicInOut;
-    state.timeElapsed = 0;
-    state.interpolator = null;
-    state.duration = 1500; //Starting duration
-    state.vOld = [state.focus.x, state.focus.y, state.focus.r * 2.05];
-
-    //Text fading variables
-    state.showText = true; //Only show the text while you're not zooming
-    state.textAlpha = 1; //After a zoom is finished fade in the text;
-    state.fadeText = false;
-    state.fadeTextDuration = 750;
-    state.diameter = diameter;
+    state = Object.assign(state, {
+      diameter,
+      fadeTextDuration: 750,
+      fadeText: false,
+      textAlpha: 1, //After a zoom is finished fade in the text;
+      showText: true, //Only show the text while you're not zooming,
+      duration: 1500,
+      interpolator: null,
+      timeElapsed: 0,
+      _cubicEase: easeCubicInOut,
+      scaleFactor: 1, //dummy value
+      //Start the drawing loop. It will jump out of the loop once stopTimer becomes true
+      stopTimer: false,
+      vOld: [state.focus.x, state.focus.y, state.focus.r * 2.05],
+    });
 
     //////////////////////////////////////////////////////////////
     /////////////////////// Initiate /////////////////////////////
@@ -159,10 +168,6 @@ const apiRender = state => ({
     //Draw the legend
 
     // this.createLegend(scaleFactor);
-
-    //Start the drawing loop. It will jump out of the loop once stopTimer becomes true
-    state.stopTimer = false;
-
     animate(state);
   }, //drawAll
 });
