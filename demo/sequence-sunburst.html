@@ -103,7 +103,7 @@
             var csv = d3.csvParseRows(text);
             var json = VizArtHierarchy.buildHierarchy(csv);
 
-            var sunburst = new VizArtHierarchy.SequentialSunburst('#chart', {
+            var sunburst = VizArtHierarchy.sequentialSunburst('#chart', {
                 chart: {
                     margin: {
                         top: 90,
@@ -111,12 +111,13 @@
                         left: 0,
                         right: 0
                     },
+                },
+                uiConfig: {
+                    sequence: '#sequence',
+                    explanation: '#explanation',
+                    percentage: '#percentage'
                 }
-            },{
-                sequence: '#sequence',
-                explanation: '#explanation',
-                percentage: '#percentage'
-            });
+            },);
 
             sunburst.render(json);
             sunburst.drawLegend('#legend')

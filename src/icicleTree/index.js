@@ -9,8 +9,6 @@ const opt = {
   color: DefaultCategoricalColor,
 };
 
-
-export default factory(svgLayer, {
-    opt,
-}, [apiRender, apiColor]);
-
+export default factory(
+  svgLayer, { opt }, [apiRender, apiColor]
+);
