@@ -5,18 +5,15 @@ import { apiRenderSVG, uuid } from 'vizart-core';
 
 const apiRender = state => ({
   render(data) {
-      apiRenderSVG(state).render(data);
-      
-      const { _options, _container, _svg, _data, _color } = state;
+    apiRenderSVG(state).render(data);
+
+    const { _options, _container, _svg, _data, _color } = state;
 
     const _radius =
-      Math.min(
-        _options.chart.innerWidth,
-        _options.chart.innerHeight
-      ) / 2;
+      Math.min(_options.chart.innerWidth, _options.chart.innerHeight) / 2;
 
     const _uuid = uuid();
-    
+
     // id generation
     const _trailId = '#trail-' + _uuid;
     const _endLabelId = '#end-label-' + _uuid;
@@ -45,11 +42,7 @@ const apiRender = state => ({
       .attr('r', _radius)
       .style('opacity', 0);
 
-
-    const _partition = partition().size([
-      2 * Math.PI,
-      _radius * _radius,
-    ]);
+    const _partition = partition().size([2 * Math.PI, _radius * _radius]);
 
     const _arc = arc()
       .startAngle(d => d.x0)
@@ -58,17 +51,17 @@ const apiRender = state => ({
       .outerRadius(d => Math.sqrt(d.y1));
 
     // Basic setup of page elements.
-      // Add the svg area.
+    // Add the svg area.
     const trail = select(_uiConfig.sequence)
-        .append('svg:svg')
-        .attr('width', _options.chart.width)
-        .attr('height', 50)
-        .attr('id', _trailId.substr(1, _trailId.length - 1));
+      .append('svg:svg')
+      .attr('width', _options.chart.width)
+      .attr('height', 50)
+      .attr('id', _trailId.substr(1, _trailId.length - 1));
     // Add the label at the end, for the percentage.
     trail
-        .append('svg:text')
-        .attr('id', _endLabelId.substr(1, _endLabelId.length - 1))
-        .style('fill', '#000');
+      .append('svg:text')
+      .attr('id', _endLabelId.substr(1, _endLabelId.length - 1))
+      .style('fill', '#000');
 
     // Turn the data into a d3 hierarchy and calculate the sums.
     const root = hierarchy(_data)
@@ -86,13 +79,12 @@ const apiRender = state => ({
       .data(nodes)
       .enter()
       .append('svg:path')
-      .attr('display', d => d.depth ? null : 'none')
+      .attr('display', d => (d.depth ? null : 'none'))
       .attr('d', _arc)
       .attr('fill-rule', 'evenodd')
       .style('fill', d => _color(d.data.name))
       .style('opacity', 1)
       .on('mouseover', mouseover);
-
 
     // Add the mouseleave handler to the bounding circle.
     _svg.on('mouseleave', mouseleave);
@@ -145,7 +137,12 @@ const apiRender = state => ({
         .text(d => d.data.name);
 
       // Merge enter and update selections; set position for all nodes.
-      entering.merge(trail).attr('transform', (d, i) => 'translate(' + i * (breadcrumbs.w + breadcrumbs.s) + ', 0)');
+      entering
+        .merge(trail)
+        .attr(
+          'transform',
+          (d, i) => 'translate(' + i * (breadcrumbs.w + breadcrumbs.s) + ', 0)'
+        );
 
       // Now move and update the percentage at the end.
       select(_trailId)
@@ -186,25 +183,25 @@ const apiRender = state => ({
         .style('opacity', 1);
     }
 
-      // Restore everything to full opacity when moving off the visualization.
-      function mouseleave(d) {
-          // Hide the breadcrumb trail
-          select(_trailId).style('visibility', 'hidden');
+    // Restore everything to full opacity when moving off the visualization.
+    function mouseleave(d) {
+      // Hide the breadcrumb trail
+      select(_trailId).style('visibility', 'hidden');
 
-          // Deactivate all segments during transition.
-          selectAll('path').on('mouseover', null);
+      // Deactivate all segments during transition.
+      selectAll('path').on('mouseover', null);
 
-          // Transition each segment to full opacity and then reactivate it.
-          selectAll('path')
-              .transition()
-              .duration(1000)
-              .style('opacity', 1)
-              .on('end', function() {
-                  select(this).on('mouseover', mouseover);
-              });
+      // Transition each segment to full opacity and then reactivate it.
+      selectAll('path')
+        .transition()
+        .duration(1000)
+        .style('opacity', 1)
+        .on('end', function() {
+          select(this).on('mouseover', mouseover);
+        });
 
-          select(_uiConfig.explanation).style('visibility', 'hidden');
-      }
+      select(_uiConfig.explanation).style('visibility', 'hidden');
+    }
   },
 });
 

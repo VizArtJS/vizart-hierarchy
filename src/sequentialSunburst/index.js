@@ -11,11 +11,11 @@ const opt = {
     breadcrumb: { w: 75, h: 30, s: 3, t: 10 },
     legendMargin: { w: 75, h: 30, s: 3, r: 3 },
   },
-    uiConfig: {
-        sequence: null,
-        explanation: null,
-        percentage: null,
-    }
+  uiConfig: {
+    sequence: null,
+    explanation: null,
+    percentage: null,
+  },
 };
 
 export default factory(svgLayer, { opt }, [apiRender, apiDrawLegend]);
