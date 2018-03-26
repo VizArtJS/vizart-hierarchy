@@ -1,6 +1,4 @@
-const diagonalHorizontal = d => {
-  return (
-    'M' +
+const diagonalHorizontal = d => 'M' +
     d.y +
     ',' +
     d.x +
@@ -15,8 +13,6 @@ const diagonalHorizontal = d => {
     ' ' +
     d.parent.y +
     ',' +
-    d.parent.x
-  );
-};
+    d.parent.x;
 
 export default diagonalHorizontal;

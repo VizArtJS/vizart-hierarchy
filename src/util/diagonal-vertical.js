@@ -1,6 +1,4 @@
-const diagonalVertical = d => {
-  return (
-    'M' +
+const diagonalVertical = d => 'M' +
     d.source.x +
     ',' +
     d.source.y +
@@ -15,8 +13,6 @@ const diagonalVertical = d => {
     ' ' +
     d.target.x +
     ',' +
-    d.target.y
-  );
-};
+    d.target.y;
 
 export default diagonalVertical;

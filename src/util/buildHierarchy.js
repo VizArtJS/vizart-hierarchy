@@ -4,7 +4,7 @@
 // often that sequence occurred.
 
 const buildHierarchy = csv => {
-  let root = { name: 'root', children: [] };
+  const root = { name: 'root', children: [] };
 
   for (let i = 0; i < csv.length; i++) {
     let sequence = csv[i][0];
