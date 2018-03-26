@@ -1,5 +1,5 @@
 //Adjusted from: http://blog.graphicsgen.com/2015/03/html5-canvas-rounded-text.html
-let drawCircularText = function(
+const drawCircularText = (
   ctx,
   text,
   fontSize,
@@ -10,7 +10,7 @@ let drawCircularText = function(
   startAngle,
   kerning,
   textAlpha
-) {
+) => {
   // startAngle:   In degrees, Where the text will be shown. 0 degrees if the top of the circle
   // kearning:     0 for normal gap between letters. Positive or negative number to expand/compact gap in pixels
 
@@ -28,8 +28,9 @@ let drawCircularText = function(
 
   //Rotate 50% of total angle for center alignment
   for (let j = 0; j < text.length; j++) {
-    let charWid = ctx.measureText(text[j]).width;
-    startAngle += (charWid + (j == text.length - 1 ? 0 : kerning)) / radius / 2;
+    const charWid = ctx.measureText(text[j]).width;
+    startAngle +=
+      (charWid + (j === text.length - 1 ? 0 : kerning)) / radius / 2;
   } //for j
 
   ctx.save(); //Save the default state before doing any transformations
@@ -38,7 +39,7 @@ let drawCircularText = function(
 
   //Now for the fun bit: draw, rotate, and repeat
   for (let j = 0; j < text.length; j++) {
-    let charWid = ctx.measureText(text[j]).width / 2; // half letter
+    const charWid = ctx.measureText(text[j]).width / 2; // half letter
     //Rotate half letter
     ctx.rotate(-charWid / radius);
     //Draw the character at "top" or "bottom" depending on inward or outward facing

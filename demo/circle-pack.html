@@ -209,7 +209,7 @@
         };
 
 
-        var chart = new VizArtHierarchy.CirclePack('#chart', options);
+        var chart = VizArtHierarchy.circlePack('#chart', options);
         $.getJSON('./assets/library-small.json', function(data){
 
             chart.render(data);
