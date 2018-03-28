@@ -1,21 +1,16 @@
-import isUndefined from 'lodash-es/isUndefined';
-import isNull from 'lodash-es/isNull';
-
-let _checkParent = function(node, focus) {
-  if (isUndefined(node.parent) || isNull(node.parent)) {
+const checkParent = (node, focus) => {
+  if (node.parent === undefined || node.parent === null) {
     return false;
   } else {
     if (node.parent === focus) {
       return true;
     } else {
-      return _checkParent(node.parent);
+      return checkParent(node.parent);
     }
   }
-
-  return false;
 };
 
-let sameBranch = function(node, focus) {
+const sameBranch = (node, focus) => {
   // no check on root node
   if (focus.parent === null) {
     return true;
@@ -32,7 +27,7 @@ let sameBranch = function(node, focus) {
   }
 
   // descendant of focus
-  return _checkParent(node, focus);
+  return checkParent(node, focus);
 };
 
 export default sameBranch;
