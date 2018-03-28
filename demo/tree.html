@@ -39,7 +39,7 @@
 
 <script>
     $(document).ready(function () {
-        var chart = new VizArtHierarchy.WeightedTree('#chart', {
+        var chart = VizArtHierarchy.weightedTree('#chart', {
             chart: {
                 margin: {
                     left: 50,
@@ -68,6 +68,9 @@
                     "#FF5722"
                 ],
                 type: 'categorical'
+            },
+            plots: {
+                mode: 'tree',
             }
         });
 
