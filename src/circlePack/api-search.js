@@ -1,3 +1,5 @@
+import zoomToCanvas from './zoom-to-canvas';
+
 const apiSearch = state => ({
   //Needed in the global scope
   search(_name = '') {
@@ -14,7 +16,7 @@ const apiSearch = state => ({
       return;
     }
 
-    state._zoomToCanvas(_node);
+    zoomToCanvas(state, _node);
   },
 });
 
