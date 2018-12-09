@@ -23,16 +23,14 @@ const apiDrawLegend = state => ({
         (d, i) => 'translate(0,' + i * (_legendMargin.h + _legendMargin.s) + ')'
       );
 
-    g
-      .append('svg:rect')
+    g.append('svg:rect')
       .attr('rx', _legendMargin.r)
       .attr('ry', _legendMargin.r)
       .attr('width', _legendMargin.w)
       .attr('height', _legendMargin.h)
       .style('fill', d => _color(d));
 
-    g
-      .append('svg:text')
+    g.append('svg:text')
       .attr('x', _legendMargin.w / 2)
       .attr('y', _legendMargin.h / 2)
       .attr('dy', '0.35em')

@@ -121,7 +121,7 @@ const apiRender = state => ({
     }
 
     function computeTextRotation(d) {
-      return (x((d.x0 + d.x1) / 2) - Math.PI / 2) / Math.PI * 180;
+      return ((x((d.x0 + d.x1) / 2) - Math.PI / 2) / Math.PI) * 180;
     }
 
     // Build the sunburst.

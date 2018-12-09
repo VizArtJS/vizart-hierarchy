@@ -97,9 +97,8 @@ const draw = state => {
   node
     .append('text')
     .attr('dy', 4)
-    .attr(
-      'x',
-      d => (d.children ? -_options.plots.textOffset : _options.plots.textOffset)
+    .attr('x', d =>
+      d.children ? -_options.plots.textOffset : _options.plots.textOffset
     )
     .style('text-anchor', d => (d.children ? 'end' : 'start'))
     .text(d => d.data.name);

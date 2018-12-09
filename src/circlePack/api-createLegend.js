@@ -62,7 +62,7 @@ const apiCreateLegend = state => ({
       .attr('x', legendCenter + legendLineLength + textPadding)
       .attr('y', d => legendBottom - 2 * d)
       .attr('dy', '0.3em')
-      .text(d => commaFormat(Math.round(scaleFactor * d * d / 10) * 10));
+      .text(d => commaFormat(Math.round((scaleFactor * d * d) / 10) * 10));
 
     //Slowly fade in so the scaleFactor is set to the correct value in the mean time :)
     select('.legendWrapper')

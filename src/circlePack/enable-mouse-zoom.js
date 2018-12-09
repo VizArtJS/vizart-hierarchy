@@ -58,7 +58,7 @@ const enableMouseZoom = state => {
             select('.popoverWrapper').style({
               position: 'absolute',
               top: nodeY - nodeR,
-              left: nodeX + _options.plots.padding * 5 / 4,
+              left: nodeX + (_options.plots.padding * 5) / 4,
             });
 
             //Show the tooltip
