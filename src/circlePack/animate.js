@@ -41,7 +41,7 @@ const interpolateZoom = (state, dt) => {
       //Update the texts in the legend
       select('.legendWrapper')
         .selectAll('.legendText')
-        .text(d => commaFormat(Math.round(scaleFactor * d * d / 10) * 10));
+        .text(d => commaFormat(Math.round((scaleFactor * d * d) / 10) * 10));
     } //if -> timeElapsed >= duration
   } //if -> this.interpolator
 }; //function _zoomToCanvas

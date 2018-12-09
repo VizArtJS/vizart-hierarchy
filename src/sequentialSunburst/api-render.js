@@ -159,7 +159,7 @@ const apiRender = state => ({
 
     // Fade all but the current sequence, and show it in the breadcrumb trail.
     function mouseover(d) {
-      const percentage = (100 * d.value / totalSize).toPrecision(3);
+      const percentage = ((100 * d.value) / totalSize).toPrecision(3);
       let percentageString = percentage + '%';
       if (percentage < 0.1) {
         percentageString = '< 0.1%';

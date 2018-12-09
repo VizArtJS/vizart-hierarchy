@@ -19,10 +19,10 @@ const drawBars = (state, chosenContext, node, nodeX, nodeY, nodeR) => {
   const bars = node.data._data;
   const totalOffset = nodeX + -nodeR * 0.3;
   const eachBarHeight =
-    (1 - _options.plots.barChartHeightOffset) *
-    2 *
-    nodeR *
-    _options.plots.barChartHeight /
+    ((1 - _options.plots.barChartHeightOffset) *
+      2 *
+      nodeR *
+      _options.plots.barChartHeight) /
     elementsPerBar;
   const barHeight = eachBarHeight * 0.8;
 
