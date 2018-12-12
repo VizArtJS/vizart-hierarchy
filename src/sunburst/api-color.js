@@ -1,4 +1,4 @@
-import 'd3-transition';
+import { transition } from 'd3-transition';
 
 const apiColor = state => ({
   color(colorOptions) {
@@ -18,12 +18,11 @@ const apiColor = state => ({
       state._options.color.scheme = colorOptions.scheme;
     }
 
-    const { _svg } = state;
+    const { _containerId } = state;
     state._color = state.composers.color(state._options.color);
 
-    _svg
-      .selectAll('.node path')
-      .transition()
+    transition()
+      .selectAll(_containerId + ' .node path')
       .duration(1250)
       .attr('fill', d => state._color(d.data.name));
   },
