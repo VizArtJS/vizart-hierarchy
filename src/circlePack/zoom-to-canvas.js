@@ -1,6 +1,6 @@
 //Create the interpolation function between current view and the clicked on node
 import { select, selectAll } from 'd3-selection';
-import 'd3-transition';
+import { transition } from 'd3-transition';
 import { interpolateZoom } from 'd3-interpolate';
 
 import animate from './animate';
@@ -31,14 +31,14 @@ const zoomToCanvas = (state, focusNode) => {
   //Only show the circle legend when not at a leaf node
   if (focusNode.data.hasOwnProperty('_data')) {
     select('#legendRowWrapper').style('opacity', 0);
-    select('.legendWrapper')
-      .transition()
+    transition()
+      .select('.legendWrapper')
       .duration(1000)
       .style('opacity', 0);
   } else {
     select('#legendRowWrapper').style('opacity', 1);
-    select('.legendWrapper')
-      .transition()
+    transition()
+      .select('.legendWrapper')
       .duration(1000)
       .delay(state.duration)
       .style('opacity', 1);

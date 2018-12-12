@@ -1,4 +1,4 @@
-import 'd3-transition';
+import { transition } from 'd3-transition';
 
 const apiColor = state => ({
   color(colorOptions) {
@@ -20,11 +20,10 @@ const apiColor = state => ({
 
     state._color = state._composers.color(state._options.color);
 
-    const { _options, _svg, _color } = state;
+    const { _options, _svg, _color, _containerId } = state;
 
-    _svg
-      .selectAll('.node circle')
-      .transition()
+    transition()
+      .selectAll(_containerId + ' .node circle')
       .duration(duration.general)
       .style('stroke', d => _color(d.data.name))
       .style('stroke-opacity', _options.plots.nodeStrokeOpacity)

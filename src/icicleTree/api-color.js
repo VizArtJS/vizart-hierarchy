@@ -1,4 +1,4 @@
-import 'd3-transition';
+import { transition } from 'd3-transition';
 
 const apiColor = state => ({
   color(colorOpt) {
@@ -18,12 +18,11 @@ const apiColor = state => ({
       state._options.color.scheme = colorOpt.scheme;
     }
 
-    const { _options, _composers, _svg, _color } = state;
+    const { _options, _composers, _containerId, _color } = state;
     state._color = _composers.color(state._options.color);
 
-    _svg
-      .selectAll('.icicle-slice')
-      .transition()
+    transition()
+      .selectAll(_containerId + ' .icicle-slice')
       .duration(_options.animation.duration.update)
       .attr('fill', d => _color(d.name));
   },
