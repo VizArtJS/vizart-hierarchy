@@ -1,13 +1,12 @@
 import { apiRenderSVG } from 'vizart-core';
 import { scaleLinear } from 'd3-scale';
 import { hierarchy, partition } from 'd3-hierarchy';
-import { transition } from 'd3-transition';
 
 const apiRender = state => ({
   render(data) {
     apiRenderSVG(state).render(data);
 
-    const { _options, _data, _svg, _color, _containerId } = state;
+    const { _options, _data, _svg, _color } = state;
 
     const _height = _options.chart.innerHeight;
 
@@ -29,16 +28,18 @@ const apiRender = state => ({
       xScale.domain([d.x0, d.x1]);
       yScale.domain([d.y0, _height]).range([d.depth ? 20 : 0, _height]);
 
-      transition()
-        .selectAll(_containerId + ' .icicle-slice')
+      _svg
+        .selectAll('.icicle-slice')
+        .transition()
         .duration(750)
         .attr('x', d => xScale(d.x0))
         .attr('y', d => yScale(d.y0))
         .attr('width', d => xScale(d.x1) - xScale(d.x0))
         .attr('height', d => yScale(d.y1) - yScale(d.y0));
 
-      transition()
-        .selectAll(_containerId + ' .icicle-slice')
+      _svg
+        .selectAll('.icicle-label')
+        .transition()
         .duration(_options.animation.duration.quickUpdate)
         .attr('x', d => xScale(d.x0))
         .attr('y', d => yScale(d.y0))
