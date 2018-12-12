@@ -1,5 +1,5 @@
 import { select } from 'd3-selection';
-import 'd3-transition';
+import { transition } from 'd3-transition';
 import { format } from 'd3-format';
 
 const commaFormat = format(',');
@@ -66,8 +66,8 @@ const apiCreateLegend = state => ({
       .text(d => commaFormat(Math.round((scaleFactor * d * d) / 10) * 10));
 
     //Slowly fade in so the scaleFactor is set to the correct value in the mean time :)
-    select('.legendWrapper')
-      .transition()
+    transition()
+      .select(legendId + ' .legendWrapper')
       .duration(1000)
       .delay(500)
       .style('opacity', 1);

@@ -2,13 +2,13 @@ import { hierarchy, partition } from 'd3-hierarchy';
 import { select, selectAll } from 'd3-selection';
 import { arc } from 'd3-shape';
 import { apiRenderSVG, uuid } from 'vizart-core';
-import 'd3-transition';
+import { transition } from 'd3-transition';
 
 const apiRender = state => ({
   render(data) {
     apiRenderSVG(state).render(data);
 
-    const { _options, _container, _svg, _data, _color } = state;
+    const { _options, _container, _svg, _data, _color, _containerId } = state;
 
     const _radius =
       Math.min(_options.chart.innerWidth, _options.chart.innerHeight) / 2;
@@ -193,8 +193,9 @@ const apiRender = state => ({
       selectAll('path').on('mouseover', null);
 
       // Transition each segment to full opacity and then reactivate it.
-      selectAll('path')
-        .transition()
+
+      transition()
+        .selectAll(_containerId + ' path')
         .duration(1000)
         .style('opacity', 1)
         .on('end', function() {
