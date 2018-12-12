@@ -3,7 +3,7 @@ import { arc } from 'd3-shape';
 import { interpolateArray, interpolateObject } from 'd3-interpolate';
 import { select } from 'd3-selection';
 import { scaleLinear, scaleSqrt } from 'd3-scale';
-
+import 'd3-transition';
 import { apiRenderSVG, apiUpdate } from 'vizart-core';
 
 const apiRender = state => ({

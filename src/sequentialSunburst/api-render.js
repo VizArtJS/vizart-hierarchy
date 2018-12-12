@@ -2,6 +2,7 @@ import { hierarchy, partition } from 'd3-hierarchy';
 import { select, selectAll } from 'd3-selection';
 import { arc } from 'd3-shape';
 import { apiRenderSVG, uuid } from 'vizart-core';
+import 'd3-transition';
 
 const apiRender = state => ({
   render(data) {

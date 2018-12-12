@@ -1,5 +1,6 @@
 //Create the interpolation function between current view and the clicked on node
 import { select, selectAll } from 'd3-selection';
+import 'd3-transition';
 import { interpolateZoom } from 'd3-interpolate';
 
 import animate from './animate';
