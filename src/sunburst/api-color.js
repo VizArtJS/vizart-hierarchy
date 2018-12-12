@@ -1,3 +1,5 @@
+import 'd3-transition';
+
 const apiColor = state => ({
   color(colorOptions) {
     if (!colorOptions) {

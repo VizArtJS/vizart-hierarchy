@@ -1,4 +1,5 @@
 import { select } from 'd3-selection';
+import 'd3-transition';
 import { format } from 'd3-format';
 
 const commaFormat = format(',');

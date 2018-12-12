@@ -1,6 +1,7 @@
 import { apiRenderSVG } from 'vizart-core';
 import { scaleLinear } from 'd3-scale';
 import { hierarchy, partition } from 'd3-hierarchy';
+import 'd3-transition';
 
 const apiRender = state => ({
   render(data) {
