@@ -1,6 +1,6 @@
 {
   "name": "vizart-hierarchy",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "VizArt: Hierarchy",
   "main": "dist/vizart-hierarchy.js",
   "module": "dist/vizart-hierarchy.esm.js",
